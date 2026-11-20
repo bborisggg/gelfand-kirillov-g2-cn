@@ -1,0 +1,776 @@
+\documentclass[11pt,a4paper]{article}
+\ifdefined\pdfmapfile\pdfmapfile{+cm.map}\pdfmapfile{+cmextra.map}\pdfmapfile{+euler.map}\pdfmapfile{+symbols.map}\fi
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=27mm,top=23mm,bottom=24mm]{geometry}
+\usepackage{booktabs,array}
+\usepackage{url}
+\usepackage[hidelinks,bookmarksnumbered]{hyperref}
+\hypersetup{pdftitle={A valuation obstruction to Weyl coordinates in types C and G2},pdfsubject={Research manuscript on the Gelfand--Kirillov conjecture}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small\itshape A valuation obstruction to Weyl coordinates}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.25pt}
+\setlength{\headheight}{14pt}
+\renewcommand{\le}{\leqslant}\renewcommand{\ge}{\geqslant}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Frac}{\operatorname{Frac}}
+\newcommand{\ad}{\operatorname{ad}}
+\newcommand{\trdeg}{\operatorname{trdeg}}
+\newcommand{\gr}{\operatorname{gr}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{2pt plus 1pt}
+\allowdisplaybreaks
+\urlstyle{same}
+\begin{document}
+
+\thispagestyle{plain}
+\begin{center}
+{\LARGE A valuation obstruction to Weyl coordinates\\[4pt]in types \(C\) and \(G_2\)}\\[6pt]
+{\small Revised manuscript, November 2026}
+\end{center}
+\begin{abstract}
+We give a proposed proof that the quotient division rings of \(U(\mathfrak{sp}_{2n})\), \(n\ge2\), and \(U(\mathfrak g_2)\) are not Weyl division rings over their centres. An order filtration bounds the transcendence degree of a field of commuting positions. In rank two the bound follows from an unramified quaternion class on a conic bundle in characteristic \(p\). A parabolic localization transfers the symplectic rank-two obstruction to every \(n\ge3\).
+\end{abstract}
+
+\section{Introduction}
+Let \(Q_{\mathfrak g}=\Frac U(\mathfrak g)\), \(K=Z(Q_{\mathfrak g})\), and
+\(N=(\dim\mathfrak g-\operatorname{rk}\mathfrak g)/2\). Write
+\(D_d(k)=\Frac A_d(k)\) for the division ring of the Weyl algebra with relations
+\[
+ [p_i,q_j]=\delta_{ij},\qquad [q_i,q_j]=[p_i,p_j]=0 .
+\]
+For a complex simple Lie algebra the Gelfand--Kirillov conjecture asks whether
+\(Q_{\mathfrak g}\cong D_N(K)\). Gel'fand and Kirillov established the type \(A\) case \cite{GK}. Premet excluded \(B_n\) for \(n\ge3\), \(D_n\) for \(n\ge4\), and \(E_6,E_7,E_8,F_4\) \cite[Thm.~1.1]{PremetGK}. The remark following Corollary~7.10 of \cite{FHJS} records the remaining types \(C\) and \(G_2\).
+\begin{theorem}\label{main}
+Let \(\mathfrak g=\mathfrak{sp}_{2n}(\C)\), \(n\ge2\), or \(\mathfrak g=\mathfrak g_2\). Then \(Q_{\mathfrak g}\not\cong D_N(K)\).
+\end{theorem}
+The isomorphism \(B_2=C_2\) identifies \(\mathfrak{so}_5\) with \(\mathfrak{sp}_4\). Thus the rank-two orthogonal case is precisely the symplectic base case in Section~\ref{sec:paper-c2}. At rank one, \(C_1=A_1\) has the usual positive answer: for the standard \(\mathfrak{sl}_2\) triple and \(\Omega=ef+fe+h^2/2\),
+\[
+ q=e,\quad p=(2q)^{-1}h,\quad [p,q]=1,\qquad
+ h=2qp,\quad f=(2q)^{-1}(\Omega+h-h^2/2).
+\]
+
+Suppose \(M=K(q_1,\ldots,q_N)\) is the position field of a generating Weyl system. Every \(f\in M\) acts by the rational substitution
+\[
+   q_j\mapsto q_j,\qquad p_i\mapsto p_i-s\,\partial f/\partial q_i.
+\]
+For the order filtrations below, Proposition~\ref{prop:bound} gives
+\[
+ N\le\trdeg_K\Frac(\gr M)\le r,
+\]
+where \(r\) is the number of ordinary differential directions. The lower bound uses the conjugate momenta. For the upper bound we show that the coefficient division ring has no noncentral element with rational adjoint flow. Such a flow would give a ruling of its modular centre over its field of scalars, contrary to an unramified Brauer class (Propositions~\ref{prop:fourbranch} and \ref{prop:modularflow}).
+The oscillator realization in Section~\ref{sec:paper-c2}, the minimal finite \(W\)-algebra in Section~\ref{sec:g2radial} and the parabolic localization in Section~\ref{sec:higher-symplectic} give, respectively,
+\[
+ (N,r)=(4,3),\qquad (6,5),\qquad (n^2,n^2-1).
+\]
+In the last pair the base field is a finite extension of \(K\).
+
+\section{Symbols of a Weyl presentation}\label{sec:symbol}
+Let \(k\) be a field of characteristic zero, \(F=k(u_1,\ldots,u_r)\) a rational function field, and \(B\) a division ring with \(Z(B)=F\). Let \(\partial_i\) be commuting derivations of \(B\) with \(\partial_i u_j=\delta_{ij}\) and \(\partial_i k=0\). Set
+\[
+ R=\Frac B[P_1,\ldots,P_r;\partial_1,\ldots,\partial_r],
+ \qquad [P_i,b]=\partial_i b,\quad [P_i,P_j]=0.
+\]
+Give \(B\) order zero and each \(P_i\) order one. Ordered monomials give \(\gr B[\mathbf P;\boldsymbol\partial]=B[\boldsymbol\xi]\) with central \(\xi_i\). Thus \(\operatorname{ord}(ab)=\operatorname{ord}a+\operatorname{ord}b\), and for Ore fractions
+\[
+ \operatorname{ord}(ab^{-1})=\operatorname{ord}a-\operatorname{ord}b,\qquad
+ \sigma(ab^{-1})=\sigma(a)\sigma(b)^{-1}\in B(\boldsymbol\xi).
+\]
+Here \(\sigma\) is the principal symbol. An element \(a\) of a division ring \(D\) has \emph{rational adjoint flow} if \(\exp(s\ad a)b\in D(s)\) for all \(b\in D\), in the Taylor expansion at \(s=0\).
+
+\begin{proposition}\label{prop:bound}
+Suppose that for some finite extension \(\mathcal E/F\), possibly \(\mathcal E=F\), the algebra \(B_{\mathcal E}=B\otimes_F\mathcal E\) is a division ring with centre \(\mathcal E\). Suppose every element with rational adjoint flow on \(B_{\mathcal E}(\boldsymbol\xi)\) belongs to \(\mathcal E(\boldsymbol\xi)\). Then \(R\cong D_d(k)\) over \(k\) implies \(d\le r\).
+\end{proposition}
+\begin{proof}
+Write \(M=k(q_1,\ldots,q_d)\) for the field of positions in such a presentation and \(M^\flat=\Frac(\gr M)\).
+
+\emph{Scalar symbols.} Let \(0\ne f\in M\), \(m=\operatorname{ord}f\), \(a=\sigma(f)\), and \(b\in B\). The substitution \(p_i\mapsto p_i-s\,\partial f/\partial q_i\) makes \(\exp(s\ad f)b\) rational. Take a nonzero left denominator \(\sum_j c_js^j\) and put \(h=\max_{c_j\ne0}(\operatorname{ord}c_j-jm)\). The component of order \(nm\) in \((\ad f)^n b\) is \((\ad a)^n b\), possibly zero. In the product of the denominator and the orbit, the coefficient of \(s^n\) at order \(nm+h\) therefore gives
+\[
+ \sum_{\operatorname{ord}c_j-jm=h}\sigma(c_j)
+ \frac{(\ad a)^{n-j}b}{(n-j)!}=0\qquad(n\gg0).
+\]
+The sum of the corresponding \(\sigma(c_j)s^j\) is a nonzero polynomial denominator for \(\exp(s\ad a)b\). Since \(B\) and the fixed scalars \(\mathcal E(\boldsymbol\xi)\) generate \(B_{\mathcal E}(\boldsymbol\xi)\), the hypothesis gives
+\[
+ a\in B(\boldsymbol\xi)\cap\mathcal E(\boldsymbol\xi)=F(\boldsymbol\xi).
+\]
+For the intersection, expand in an \(F\)-basis of \(\mathcal E\) containing \(1\) and clear a common denominator. This applies to all \(f\in M^\times\), including cancellations among leading terms.
+
+\emph{Upper bound.} For \(f,g\in M^\times\) with orders \(m,n\), their scalar homogeneous symbols \(a,c\) lift to \(f_0,g_0\in\Frac F[\mathbf P;\boldsymbol\partial]\): write each as a quotient of homogeneous polynomials in \(\boldsymbol\xi\), then replace \(\boldsymbol\xi\) by \(\mathbf P\) with coefficients on the left. Bracketing with a scalar symbol loses at least one order. Thus
+\[
+ \begin{aligned}
+ [f,g]-[f_0,g_0]&\text{ has order at most }m+n-2,\\
+ 0=[f_0,g_0]_{m+n-1}
+ &=\{a,c\}=\sum_i
+   \left(\partial_{\xi_i}a\,\partial_{u_i}c-
+         \partial_{u_i}a\,\partial_{\xi_i}c\right).
+ \end{aligned}
+\]
+The bracket formula follows from \([P_i,u_j]=\delta_{ij}\) and inversion. Hence the differentials from \(M^\flat\) span an isotropic subspace of the \(2r\)-dimensional symplectic space over \(F(\boldsymbol\xi)\). Characteristic zero gives \(\trdeg_k M^\flat\le r\).
+
+\emph{Lower bound.} Restrict \(v=-\operatorname{ord}\) to \(M\). If \(v|_{M^\times}=0\), every nonzero element has degree zero. Hence \(\gr M=M\) and \(d=\trdeg_k M=\trdeg_k M^\flat\le r\) by the upper bound. This proves the proposition in this case.
+
+Suppose now that the restricted valuation is nontrivial. For a uniformizer \(\varpi\) and residue field \(\kappa\),
+\[
+ M^\flat=\kappa(\sigma(\varpi)),\qquad b:=\trdeg_k\kappa,\qquad
+ b+1\le d
+\]
+by the Zariski--Abhyankar inequality \cite[Thm.~2.1]{ELS}. The complete valuation ring has a coefficient field isomorphic to \(\kappa\) containing \(k\), by the equicharacteristic Cohen structure theorem \cite[Thm.~7.8]{Eisenbud}. Thus \(\widehat M\simeq\kappa((\varpi))\) over \(k\). The derivations \(D_i=[p_i,-]|_M\) extend continuously because
+\[
+ v(D_i f)\ge v(p_i)+v(f).
+\]
+Evaluation on \(q_j\) gives \((D_iq_j)=I_d\). A continuous \(k\)-derivation of \(\kappa((\varpi))\) is determined by its values on a transcendence basis of \(\kappa/k\) and on \(\varpi\), by separability and continuity. Consequently
+\[
+ d\le\dim_{\widehat M}\operatorname{Der}^{\rm cont}_k(\widehat M,\widehat M)
+ \le b+1=\trdeg_k M^\flat\le r.\qedhere
+\]
+\end{proof}
+
+\section{The modular obstruction}\label{sec:flow}
+\subsection{A four-fibre conic bundle}
+Write \((a,b)\) for the class of the quaternion algebra \(i^2=a,\ j^2=b,\ ij=-ji\). We take residues at discrete valuations trivial on the base field. We use only the \(2\)-torsion. References to \cite{CTS} use the numbering of the 2019 manuscript.
+\begin{proposition}\label{prop:fourbranch}
+Let \(\operatorname{char}k\ne2\), \(a\in k^\times\setminus k^{\times2}\), \(c\in k^\times\), and let \(r_1,\ldots,r_4\in k\) be distinct. The surface field \(k(S)\) defined by
+\[
+ v^2-aw^2=c\prod_{i=1}^4(u-r_i)
+\]
+is not stably \(k\)-rational. Over \(k_0=k^{\rm perf}\) it is not of the form \(C(y)\) for any curve field \(C/k_0\) and indeterminate \(y\). Both conclusions persist after adjoining independent scalars to \(k\).
+\end{proposition}
+\begin{proof}
+Set \(\alpha=(a,(u-r_1)(u-r_2))\) and \(\beta=(a,c\prod_i(u-r_i))\) over \(k(u)\). For a valuation \(\nu\) of \(k(S)\) trivial on \(k\), a pole of \(u\) gives even valuation to \((u-r_1)(u-r_2)\). If \(\nu(u)\ge0\), at most one factor has positive valuation. When \(\bar a\) is nonsquare in the residue field,
+\[
+ \nu(v^2-aw^2)=2\min(\nu v,\nu w).
+\]
+Thus an odd valuation of any one factor forces \(\bar a\) to be a square. The quaternion residue formula gives \(\partial_\nu\alpha=0\) in all cases \cite[Ex.~5.2.10]{CTS}.
+
+The Brauer kernel of the generic conic is \(\langle\beta\rangle\) \cite[Prop.~6.2.1]{CTS}. Write \(\partial\) for the vector of residues at \(u=r_1,\ldots,r_4\). Then
+\[
+ \partial\alpha=([a],[a],1,1),\qquad
+ \partial(\alpha+\beta)=(1,1,[a],[a]).
+\]
+If \(\alpha|_{k(S)}\) came from \(c_0\in\operatorname{Br}(k)\), the kernel formula would give \(\alpha=c_0\) or \(\alpha+\beta=c_0\) in \(\operatorname{Br}(k(u))\). Each alternative contradicts \(\partial c_0=(1,1,1,1)\), since \([a]\ne1\). Stable birational invariance gives the first assertion \cite[Cor.~5.2.5]{CTS}. The same calculation applies over \(k_0\) and over purely transcendental extensions, since \(a\) stays nonsquare.
+
+Suppose \(k_0(S)=C(y)\). Over \(\bar k_0\) the coordinates \(u,v+\sqrt a\,w\) generate the surface field. Hence a rational plane dominates the smooth projective model of \(C\) after scalar extension. Restriction to a suitable line and Lüroth's theorem give geometric genus zero. The smooth rational point \((u,v,w)=(r_1,0,0)\) yields a \(k_0\)-place of the surface by successive valuations in regular parameters. Its restriction gives a \(k_0\)-point on the proper curve. Therefore \(C\simeq k_0(x)\), contradicting the first assertion.
+\end{proof}
+
+\subsection{Specialization of a rational adjoint flow}
+
+Put \(F=\mathbb C(\mathbf a)\), where \(\mathbf a\) is a finite tuple of
+indeterminates, and \(F^{(p)}=k(\mathbf a)\) for \(k\) algebraically
+closed of characteristic \(p\).
+
+\begin{proposition}[Modular obstruction to a rational adjoint flow]
+\label{prop:modularflow}
+Let \(H=\operatorname{Frac}\Lambda\), where \(\Lambda\) is a finitely
+presented Ore \(F\)-domain and \(F\subseteq Z(H)\). Suppose:
+\begin{enumerate}
+\item The presentation and a faithful shift realization
+\[
+ F\hookrightarrow\mathbb C(\mathbf b),\qquad
+ \Lambda\hookrightarrow \mathbb C(\mathbf b)(t)(z;\tau),\qquad
+ \tau(t)=t-1,
+\]
+are given by rational-coefficient formulas, with \(\mathbf b\)
+independent. For an unbounded set of odd primes, over every \(k\) as
+above, the reduced formulas give inclusions of \(F^{(p)}\) and of the
+Ore domain \(\Lambda^{(p)}\) defined by the same presentation.
+\item For each such reduction, set \(D=\operatorname{Frac}\Lambda^{(p)}\)
+and \(Z=Z(D)\). Then \([D:Z]=p^2\). For some finite
+\(E/F^{(p)}\), the algebra \(Z\otimes_{F^{(p)}}E\) is a domain whose
+fraction field is the four-branch surface field of
+Proposition~\ref{prop:fourbranch} over \(E\).
+\end{enumerate}
+Every element of \(H\) with rational adjoint flow lies in \(Z(H)\).
+\end{proposition}
+
+\begin{proof}
+\emph{A translating element.}
+Suppose \(\delta=\operatorname{ad}X\ne0\) and
+\(\alpha_s=\exp(s\delta)\) is rational. For \(b\in H\), write
+\(\alpha_s(b)=A(s)B(s)^{-1}\) in reduced form with monic least right
+denominator. This form is unique by Euclidean division in \(H[s]\);
+a Bézout identity preserves coprimality upon extending coefficients.
+Applying the group law to this fraction gives
+\[
+ \alpha_v A(s)=A(s+v),\qquad \alpha_v B(s)=B(s+v).
+\]
+Its coefficients have polynomial orbits. Regularity at \(s=0\)
+forces \(B(0)\ne0\), since otherwise \(s\) divides both polynomials.
+Thus polynomial-orbit elements generate \(H\). Differentiating a
+nonconstant polynomial orbit gives \(h\) with
+\(\delta h\ne0,\ \delta^2h=0\). Consequently
+\[
+ Y=h(\delta h)^{-1},\qquad [X,Y]=1,\qquad \alpha_s(Y)=Y+s.
+ \tag{*}
+\]
+
+\emph{Reduction with the scalars fixed.}
+On generators \(g_i\) write \(f_i(s)=\alpha_s(g_i)\) as fractions
+regular at zero. Record the finite defining relations at the \(f_i\),
+the identities \((*)\), and
+\[
+ f_i(0)=g_i,\quad f_i'(0)=[X,g_i],\quad
+ \alpha_v(f_i(s))=f_i(s+v),\quad
+ \alpha_{-s}(f_i(s))=g_i.
+\]
+In the last identity the substitution fixes \(s\). These are finite
+rational identities in the shift field with central time variables.
+Clear common Ore denominators there. The shift powers are independent,
+so identities hold coefficientwise. For every required nonzero
+numerator or denominator, preserve one nonzero Laurent coefficient,
+then one nonzero scalar coefficient after clearing the parameter
+denominators. Invert these constants in the finitely generated
+\(\mathbb Z\)-subalgebra of \(\mathbb C\) carrying the calculation.
+Its spectrum has nonempty fibres at every sufficiently large prime
+by constructibility and dominance over \(\operatorname{Spec}\mathbb Z\).
+Choose such a prime from the indicated set and take \(k\) to be an
+algebraic closure of a residue field. The parameters stay independent.
+
+Since \([X,F]=0\), the original generator formulas define an
+\(F\)-linear action. After reduction use
+\[
+ a\longmapsto a\quad(a\in F^{(p)}),\qquad
+ g_i\longmapsto f_i(s)^{(p)} .
+\]
+The reduced relations give a homomorphism \(\Lambda^{(p)}\to D(s)\).
+Its value at zero is the inclusion, hence it extends to \(D\).
+Extending it to fix \(s\) preserves lowest Laurent coefficients and is
+injective. The inverse identities give an automorphism of \(D(s)\).
+The group law and the differential at zero hold on generators and
+therefore on fractions. In particular \(\alpha_s|_{F^{(p)}}=\operatorname{id}\).
+
+\emph{Translation on the centre.}
+Over \(\overline Z\), identify \(D\otimes_Z\overline Z\) with \(M_p(\overline Z)\). Every common invariant subspace \(V\subseteq\overline Z^p\) satisfies
+\[
+ 0=\operatorname{tr}([X|_V,Y|_V])=(\dim_{\overline Z}V)\,1_{\overline Z}.
+\]
+Thus \(p\mid\dim V\), so \(V=0\) or \(V=\overline Z^p\). Since \([X,Y^p]=pY^{p-1}=0\), a nonzero eigenspace of \(Y^p\) is invariant under \(X,Y\) and hence is the whole space. It follows that \(Y^p\) is scalar after extension and \(w=Y^p\) lies in \(D\cap Z(D\otimes_Z\overline Z)=Z\). The automorphism
+preserves \(Z(D(s))=Z(s)\), and for \(b\in Z\) the group law gives
+\[
+ \partial_s\alpha_s(b)=\alpha_s([X,b])=0,\qquad
+ \ker(\partial_s:Z(s)\to Z(s))=Z(s^p).
+\]
+Writing \(R=s^p\) gives an additive action \(\gamma_R\) on \(Z\) with
+\[
+ \gamma_R|_{F^{(p)}}=\operatorname{id},\qquad
+ \gamma_R(w)=(Y+s)^p=w+R .
+\]
+
+\emph{The invariant field.}
+Let \(k_0=E^{\rm perf}\). Geometric integrality of the four-branch
+surface and the domain assumption give its function field
+\(Z_0=\operatorname{Frac}(Z\otimes_{F^{(p)}}k_0)\).
+As \(\gamma_R\) fixes \(F^{(p)}\), extend it by the identity on
+\(k_0\); evaluation at zero gives injectivity on the tensor product.
+Put \(C=Z_0^\gamma\), so \(k_0\subseteq C\). For \(b\in Z_0\), form
+\(G_b(V)=\gamma_{V-w}(b)\). Acting on its coefficients gives
+\[
+ \gamma_S(G_b(V))=\gamma_{S+V-(w+S)}(b)=G_b(V),\qquad G_b(w)=b .
+\]
+Hence \(G_b(V)\in C(V)\) by uniqueness of normalized fractions.
+Translation \(w\mapsto w+R\) also shows that \(w\) is transcendental
+over \(C\). It follows that
+\[
+ Z_0=C(w),\qquad \operatorname{trdeg}_{k_0} C
+   =\operatorname{trdeg}_{k_0}Z_0-1=1 .
+\]
+To see finite generation, take the finitely many coefficients in
+\(C\) expressing generators of \(Z_0/k_0\) as fractions in \(w\).
+If these generate \(C_0/k_0\), then \(Z_0=C_0(w)\), whose fixed
+field under translation of \(w\) is \(C_0\). Thus \(C=C_0\).
+This ruling contradicts Proposition~\ref{prop:fourbranch}.
+\end{proof}
+
+
+\section{\texorpdfstring{The symplectic algebra in rank two}{The symplectic algebra in rank two}}
+\label{sec:paper-c2}
+
+
+\paragraph{The orthogonal realization.}
+Take \(V=\operatorname{Mat}_2(\mathbb C)\) with quadratic form \(\det\), and \(\mathcal X=V\oplus V\). The two position vectors and their conjugate derivatives give four oscillator vectors \(v_i\), using the polarized determinant to identify \(V^*\) with \(V\). In orthonormal coordinates let \(J_{ij}\delta_{\mu\nu}=[v_{i\mu},v_{j\nu}]\) and let \(S_{ij}\) be the symmetrized dot product of \(v_i,v_j\). Then
+\[
+ [S_{ij},v_{k\mu}]=J_{jk}v_{i\mu}+J_{ik}v_{j\mu}.
+\]
+Applying it to the two factors of \(S_{kl}\) gives
+\[
+ [S_{ij},S_{kl}]
+ =J_{jk}S_{il}+J_{ik}S_{jl}+J_{jl}S_{ik}+J_{il}S_{jk},
+\]
+the \(\mathfrak{sp}_4\) relations. In the Bernstein filtration the ten pairings generate the orthogonal invariants by the first fundamental theorem \cite[Theorem~5.2.2]{GW}. They are algebraically independent since every nonsingular symmetric four-by-four matrix is a Gram matrix. Exactness of reductive invariants and PBW, with Lie generators in degree two, give
+\begin{equation}\label{eq:c2osc}
+ U(\mathfrak{sp}_4)\simeq D(\mathcal X)^{O(V)} .
+\end{equation}
+
+\paragraph{A moving frame.}
+For \((M,N)\in\mathcal X\) with \(M\) invertible put
+\[
+ A=M^{-1}N,\qquad a=\det M,\quad b=\operatorname{tr}A,\quad
+ \delta=b^2-4\det A .
+\]
+These independent invariants are read from \(\det(M+xN)\). On \(\delta\ne0\), adjoin \(s^2=a,\ \theta^2=\delta\). The reference pair and the connected group action are
+\[
+ M_0=sI,\quad N_0=s\operatorname{diag}((b+\theta)/2,(b-\theta)/2),
+ \qquad (g,h)\cdot(M,N)=(gMh^{-1},gNh^{-1}).
+\]
+Here \(G=SO(V)=(SL_2\times SL_2)/\{\pm(I,I)\}\). Choose an ordered determinant-one eigenframe \(h\) of \(A\), and set \(g=Mh/s\). The common right ambiguity is the diagonal torus \(T_0\subset G\). This identifies the cover with the product of \(G/T_0\) and the \((s,b,\theta)\)-base: the ordered eigenprojectors have only \(\theta\) in their denominators.
+
+The \(s\)-sign acts on the homogeneous factor by the central element \((-I,I)\). The \(\theta\)-sign acts by right multiplication by \((J_0,J_0)\), \(J_0=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)\). Transposition, representing the other orthogonal component, fixes the reference pair and sends \((g,h)\) to \((h^{-\mathsf t},g^{-\mathsf t})\). These three actions on \(G/T_0\) are constant in the base. Thus the commuting derivatives in \(a,b,\delta\) taken with the homogeneous coordinate fixed all descend.
+
+\paragraph{The coefficient algebra.}
+The invariant operators on \(G/T_0\) are the weight-zero part of
+\(
+ U(\mathfrak{sl}_2\oplus\mathfrak{sl}_2)/
+ U(\mathfrak{sl}_2\oplus\mathfrak{sl}_2)(h_1+h_2)
+\).
+Indeed terminal torus generators kill right-invariant functions. At the identity coset the invariant symbols are
+\(\operatorname{Sym}(\mathfrak g/\mathfrak t_0)^{T_0}\), and PBW symmetrization lifts each symbol. For the usual triples set
+\[
+ t=T_1=-T_2,\quad T_i=h_i/2,\quad c_i=f_ie_i+T_i(T_i+1),\quad
+ z=e_1f_2,\quad z_-=f_1e_2 .
+\]
+Using \(e_if_i=c_i-T_i(T_i-1)\) yields
+\begin{equation}\label{eq:c2quartic}
+ [t,z]=z,\qquad z_-z=P(t),\qquad
+ P(t)=(c_1-t(t+1))(c_2-t(t+1)).
+\end{equation}
+Every weight-zero root monomial in symbols factors into opposite-weight pairs. These are the symbols of \(z,z_-,e_1f_1,e_2f_2\). The last two are recovered from \(c_i,t\), giving generation by filtered induction. Conversely \(c_1,c_2,t\) have independent symbols, and \(z^j\) have distinct \(\operatorname{ad}t\)-weights \(j\). Thus the angular fraction ring is
+\(\mathbb C(c_1,c_2)(t)(z;\tau)\), \(zr(t)=r(t-1)z\).
+
+Transpose interchanges \(c_1,c_2\) and fixes \(t,z,z_-\): for example \(e_1\mapsto-f_2,\ f_2\mapsto-e_1\). The \(s\)-sign acts trivially here. The remaining sign gives
+\begin{equation}\label{eq:c2horizontal}
+ \begin{gathered}
+ K=\mathbb C(c_1+c_2,c_1c_2),\qquad
+ F=K(a,b,\delta),\qquad \widetilde F=F(\theta),\\
+ H=\big(\widetilde F(t)(z;\tau)\big)^\sigma,\qquad
+ \sigma(\theta,t,z)=(-\theta,-t,P(t)z^{-1}).
+ \end{gathered}
+\end{equation}
+Indeed the transpose and \(s\)-sign each descend a quadratic scalar extension. For the last sign the invariants \(\theta t,z+z_-,\theta(z-z_-)\) recover \(t,z\) upon adjoining \(\theta\); the two eigenspaces give the entire fixed division ring. In particular \(Z(H)=F\), since \(\theta\) is central in the split shift ring and the centre upstairs is \(\widetilde F\). Indeed \([t,\sum_j a_j(t)z^j]=\sum_j j a_j(t)z^j\) in the shift Laurent series field, and \(a_0(t-1)=a_0(t)\) forces \(a_0\in\widetilde F\) in characteristic zero.
+
+The full differential fraction ring is \(\operatorname{Frac}H[\partial_a,\partial_b,\partial_\delta]\) with the induced coefficient derivations. Indeed powers of the invariant open-set equations clear denominators of differential operators, and finite étale descent applies to every order by base change of principal parts. Finite invariants commute with taking fractions here: a right denominator with leading symbol \(l\) can be multiplied by a lift of \(\prod_{g\ne1}g(l)\), then averaged to give an invariant denominator with nonzero symbol. The fixed derivatives have unique ordered expansions over the angular coefficients. Commuting successively with \(a,b,\delta\) removes each derivative from a fraction's Laurent expansion, since \([\partial_x^j,x]=j\partial_x^{j-1}\) for every integer \(j\). A central fraction therefore lies in \(F\), and its three derivatives vanish. The full centre is \(K\).
+
+\paragraph{Four branch points.}
+Over an algebraically closed field \(k\) of characteristic \(p>2\), use
+\(F^{(p)}=k(c_1+c_2,c_1c_2,a,b,\delta)\) and
+\(\widetilde F^{(p)}=F^{(p)}(\theta)\). The split shift ring has centre
+\(\widetilde F^{(p)}(\eta,S)\), where \(\eta=t^p-t,\ S=z^p\). The \(p^2\) monomials \(t^iz^j\), \(0\le i,j<p\), give a basis by shift ordering and the Artin--Schreier relation. Commutation with \(t\) then forces \(j=0\), and commutation with \(z\) imposes invariance under \(t\mapsto t-1\). Write \(\lambda_i(\lambda_i+1)=c_i,\ \ell_i=\lambda_i^p-\lambda_i\). Put \(\mathcal R(U)=\prod_{i=1}^2(U^2-\ell_i^2)\). The roots of \(P\) are \(\lambda_i,-1-\lambda_i\), so
+\[
+ R:=\prod_{j\in\mathbb F_p}P(t+j)=\mathcal R(\eta),
+ \qquad \sigma(\eta,S)=(-\eta,R/S).
+\]
+The identity for every prime follows by substituting \(T=t-\lambda\) in \(\prod_{j\in\mathbb F_p}(T+j)=T^p-T\).
+Since adjoining \(\theta\) splits the scalar descent, the centre downstairs is the fixed centre above, and the descended division algebra still has degree \(p\). In invariant coordinates,
+\[
+ \rho=\eta/\theta,\qquad v=(S+R/S)/2,\quad w=(S-R/S)/(2\theta),
+ \qquad v^2-\delta w^2=(\delta\rho^2-\ell_1^2)(\delta\rho^2-\ell_2^2).
+\]
+Adjoining \(\theta\) recovers \(\eta,S\), proving generation. Take the finite constant extension
+\[
+ F'=k(a,b,\lambda_1,\lambda_2,\theta)^{\langle\iota\rangle},
+ \qquad \iota(\lambda_i)=-1-\lambda_i,\quad\iota(\theta)=-\theta .
+\]
+Both square roots of \(\delta\) change sign under \(\iota\), hence \(\delta\notin(F')^{\times2}\). The four distinct roots \(\pm\ell_i/\theta\) belong to \(F'\), so division by \(\delta^2\) gives the norm surface of Proposition~\ref{prop:fourbranch}.
+
+\paragraph{Reduction over the fixed scalars.}
+The split order on \(t,z,z_-\) over \(\widetilde F\) has the four relations
+\[
+ [t,z]=z,\quad [t,z_-]=-z_-,\quad z_-z=P(t),\quad zz_-=P(t-1).
+\]
+Normal forms are polynomials in \(t\) times pure shift powers \(z^j\) or \(z_-^j\), independent by their exponents. With weights \(1,2,2\) its graded ring is \(\widetilde F[\bar t,\bar z,\bar z_-]/(\bar z\bar z_- -\bar t^4)\), so the order is noetherian. For an explicit finite presentation downstairs put
+\(U_1=\theta t,\ U_2=z+z_-,\ U_3=\theta(z-z_-)\).
+Substitute \(t=U_1/\theta,\ z=(U_2+U_3/\theta)/2,\ z_-=(U_2-U_3/\theta)/2\) in the four relators. Write each as \(r_0+\theta r_1\) over \(F\) and impose \(r_0=r_1=0\). Over \(\widetilde F\) the original ideal is stable under scalar conjugation since \(P(-t)=P(t-1)\); its even and odd parts give precisely these relations. The new order recovers the split order after scalar extension, hence is a noetherian domain with fractions \(H\). The same normal forms and descent work over \(F^{(p)}\). All nonzero fractions needed in specialization are detected in the split shift ring.
+
+A rational adjoint flow fixes \(F=Z(H)\). Its reduction is defined over \(F^{(p)}\) by this presentation. Thus the action on the modular centre extends fixing \(F'\) and then its perfect closure. These calculations persist on adjoining independent scalar variables. Proposition~\ref{prop:modularflow} gives rigidity downstairs. In Proposition~\ref{prop:bound} take
+\[
+ k=K,\qquad (u_1,u_2,u_3)=(a,b,\delta),\qquad B=H,\qquad \mathcal E=F.
+\]
+The auxiliary extension of \(k(\mathbf u)=F\) is trivial. The cover \(\widetilde F\) was used to compute \(H\); upstairs \(z\) has the noncentral rational adjoint flow \(t\mapsto t-sz\). Downstairs the required four positions would give \(4\le\operatorname{trdeg}_K M^\flat\le3\).
+
+
+\begin{proposition}[Splitting over the Cartan field]\label{prop:cartansplit}
+Put \(c_i=\lambda_i(\lambda_i+1)\) and \(M_{\rm rt}=\C(\lambda_1,\lambda_2)\). This is the full Harish--Chandra field of \(\mathfrak{sp}_4\), and \(\operatorname{Frac}U(\mathfrak{sp}_4)\otimes_K M_{\rm rt}\cong D_4(M_{\rm rt})\).
+\end{proposition}
+\begin{proof}
+Over \(M_{\rm rt}(a,b,\delta)\) the valuation \(v_\delta(\delta)=1\) shows that \(\theta^2=\delta\) remains quadratic. Put \(Q(T)=(T-\lambda_1)(T-\lambda_2)\). Then
+\[
+ \begin{gathered}
+ P(t)=Q(t)Q(-t-1),\qquad v=Q(t-1)^{-1}z,\qquad [t,v]=v,\\
+ \sigma(v)=Q(-t-1)^{-1}P(t)z^{-1}=z^{-1}Q(t-1)=v^{-1}.
+ \end{gathered}
+\]
+Since \(\sigma(v)=v^{-1}\) and \(\sigma(t,\theta)=(-t,-\theta)\), the following pair is fixed:
+\[
+ q=\frac{v-1}{\theta(v+1)},\qquad p=\frac{\theta(v+1)^2}{2v}\,t .
+\]
+Indeed \([t,q]=2v/(\theta(v+1)^2)\), hence \([p,q]=1\). The inverses \(v=(1+\theta q)/(1-\theta q)\) and \(t=\big(2v/(\theta(v+1)^2)\big)p\) give generation by quadratic descent. Moreover
+\[
+ [\partial_\delta,q]=-\frac{q}{2\delta},\qquad
+ [\partial_\delta,p]=\frac{p}{2\delta},\qquad
+ \left[\partial_\delta+\frac{qp}{2\delta},\,p\right]=\left[\partial_\delta+\frac{qp}{2\delta},\,q\right]=0.
+\]
+Together with the three base directions this gives the four Weyl pairs.
+In characteristic \(p\), the corresponding splitting is the norm identity
+\[
+ \mathcal R(\theta\rho)
+ =N\big((\ell_1+\theta\rho)(\ell_2+\theta\rho)\big).
+\]
+Here the involution fixes the \(\ell_i\) and negates \(\theta\). The involution defining \(F'\) negates the \(\ell_i\) as well.
+
+For the field identification, take linear forms \(f,g\) on \(V\) of \(\mathfrak{sl}_2\oplus\mathfrak{sl}_2\)-weights \((1,1),(1,-1)\) sharing a highest-weight factor. Their span is isotropic. For \(m\ge n\ge0\), the polynomial \(f_1^{m-n}(f_1g_2-g_1f_2)^n\) has orthogonal highest weights \(m+n,m-n\). The contraction Laplacians annihilate it by isotropy, and the raising polarization from slot two to slot one annihilates the determinant. The symplectic Cartan eigenvalues are \((m+2,n+2)\) by the Euler shifts \(\dim V/2=2\). For the positive roots \(\epsilon_1-\epsilon_2,-2\epsilon_1,-\epsilon_1-\epsilon_2,-2\epsilon_2\), one has \(\rho_{\mathfrak{sp}_4}=(-1,-2)\). Harish--Chandra evaluation at the highest weight shifted by \(\rho_{\mathfrak{sp}_4}\) \cite[Part~III, Lemma~36 and Thm.~5]{HC} gives
+\[
+ (x_1,x_2)=(m+1,n),\qquad
+ c_{1,2}=\frac{(m\pm n)(m\pm n+2)}4,\qquad
+ \lambda_{1,2}+\tfrac12=\frac{x_1\pm x_2}{2}
+\]
+up to the choices of the two roots. For the quadratic Casimir \(c=fe+T(T+1)\), \(T=h/2\), the antipode gives \(S(c)=ef+T(T-1)=c\). On a matrix coefficient \(m_{\phi,v}(g)=\phi(gv)\), the left and right actions of \(c\) therefore give \(\phi(S(c)gv)=\phi(gc v)\). Thus restriction from \(\mathcal X\) to the homogeneous factor identifies the two Casimir actions. The operators \(c_1+c_2,c_1c_2\) on \(\mathcal X\) are polynomial, invariant under transpose, and commute with the oscillator generators. By \eqref{eq:c2osc} they belong to \(Z(U(\mathfrak{sp}_4))\); their Harish--Chandra images are polynomials. If a polynomial vanishes at all \((m+1,n)\), \(m\ge n\ge0\), first fix \(n\) and vary \(m\), then vary \(n\) in each coefficient. The symmetric central characters consequently satisfy
+\[
+ \begin{gathered}
+ x_1^2+x_2^2=2(c_1+c_2)+1,\qquad x_1^2x_2^2=(c_1-c_2)^2,\\
+ (x_1,x_2)=(\lambda_1+\lambda_2+1,\lambda_1-\lambda_2),
+ \end{gathered}
+\]
+where the last equality uses the displayed choice and order of the roots. Replacing either \(\lambda_i\) by \(-1-\lambda_i\) preserves the generated field. Hence \(M_{\rm rt}=\C(x_1,x_2)\), as claimed.
+\end{proof}
+
+\section{\texorpdfstring{The exceptional algebra of type \(G_2\)}{The exceptional algebra of type G2}}
+\label{sec:g2radial}
+\subsection{The matrix model}
+For the highest-root vector \(e_{\min}\), write \(W_{\min}=U(\mathfrak g_2,e_{\min})\).
+Petukhov's Theorem~2.1 \cite{Petukhov} separates \(1+\dim\mathfrak g_2(1)/2=3\)
+Weyl pairs:
+\[
+ \operatorname{Frac}U(\mathfrak g_2)\simeq
+ \operatorname{Frac}\big(A_3(\mathbb C)\otimes W_{\min}\big).
+\]
+Use the trace pairing to identify \(\mathfrak{sl}_3^*\) with \(\mathfrak{sl}_3\). Write \(X\) for the coordinate matrix and \(\partial\) for its matrix of derivatives. Let \(\top\) act by the cotangent lift of transpose.
+\begin{proposition}[The matrix realization]\label{prop:matrix}
+For the Kazhdan filtration on \(W_{\min}\) and the Bernstein filtration on differential operators, there is a filtered isomorphism
+\begin{equation}\label{eq:g2matrix}
+ \begin{aligned}
+ W_{\min}&\simeq\mathcal A =D(\mathfrak{sl}_3)^{\langle\operatorname{PGL}_3,\top\rangle},\\
+ \mathcal A&=\C\langle\operatorname{tr}X^2,\operatorname{tr}X^3,
+              \operatorname{tr}\partial^2,\operatorname{tr}\partial^3\rangle .
+ \end{aligned}
+\end{equation}
+\end{proposition}
+\begin{proof}
+The four traces generate the algebra studied by Schwarz \cite{Schwarz}. Put \(V_i=\operatorname{Sym}^i\C^2\).
+Premet's presentation \cite[Proposition~4.1, Theorem~6.1 and Remark~6.5]{PremetW} has generators \(\mathfrak s=\mathfrak{sl}_2,V_3\) and a weight-four central element. Since \(\bigwedge^2 V_3=V_4\oplus V_0\), the \(V_4\)-bracket is a nonzero multiple of the unique equivariant map into \(U_{\le2}(\mathfrak s)\). The \(V_0\)-bracket \(I\) contains the central generator with nonzero coefficient plus a polynomial in \(\mathfrak s\).
+
+The Lie and module relations together with that \(V_4\)-bracket present \(W_{\min}\).
+Choose \(v_0,\ldots,v_3\) so that \([F_0,v_i]=(3-i)v_{i+1}\) and \([E_0,v_i]=iv_{i-1}\) for the lowering and raising operators of \(\mathfrak s\), with missing end vectors zero. Put \(C_{ij}=[v_i,v_j]\), \(I=C_{03}-3C_{12}\), \(S=C_{03}+3C_{12}\). Then
+\[
+ [E_0,I]=[F_0,I]=0,\qquad
+ 2C_{02}=[F_0,C_{01}],\qquad 2S=[F_0,[F_0,C_{01}]] .
+\]
+Since \(C_{01}\) is the prescribed highest quadratic, \(C_{02}\) and \(S\) are quadratics in \(\mathfrak s\). Jacobi gives
+\[
+ [v_0,I]=[v_0,S]-6[v_1,C_{02}]+6[v_2,C_{01}] .
+\]
+Bracketing a quadratic in \(\mathfrak s\) with \(v_i\) gives terms with one \(\mathfrak s\)-factor and one \(V_3\)-factor. Successive brackets with \(F_0\) give the same bound for every \([v_i,I]\). With weights \(2,3,4\) on \(\mathfrak s,V_3,I\) all commutators lower weight. The graded algebra is therefore a quotient of the polynomial ring on these eight generators, whose images in \(\operatorname{gr}W_{\min}\) are independent by Premet's PBW theorem \cite[Thm.~4.6]{PremetPBW}. This proves the presentation.
+
+Now put \(E=\operatorname{tr}X^2/2,\ F=-\operatorname{tr}\partial^2/2,\
+T_3=\operatorname{tr}X^3\). The oscillator triple \(E,[E,F],F\) has middle element the Euler operator plus four. On symmetrized polynomials \(\operatorname{ad}F\) replaces one \(X\) at a time by \(-\partial\), so the translates of \(T_3\) span \(V_3\). The traceless gradient and Cayley--Hamilton give
+\[
+ [T_3,[F,T_3]]
+ =9\left(\operatorname{tr}X^4-\tfrac13(\operatorname{tr}X^2)^2\right)=6E^2 .
+\]
+Rescale \(T_3\) to match the \(V_4\)-bracket. This gives a surjection onto \(\mathcal A\). For the associated graded, apply Aslaksen--Drensky--Sadikova \cite[Thm.~1.2 and (9)]{ADS} to the pair of traceless matrices \(X,Y\). Seven generators are the polarized quadratics and cubics. Their quartic generator \(v\) satisfies
+\[
+ v=3\operatorname{tr}(X^2Y^2)-\tfrac12\operatorname{tr}(X^2)\operatorname{tr}(Y^2)
+    -(\operatorname{tr}(XY))^2 .
+\]
+The ninth generator is a sextic \(w\), odd under transpose, with \(w^2\) in the polynomial algebra on the first eight. Thus the simultaneous conjugation-and-transpose invariants form precisely that polynomial algebra. The seven polarizations lift by the oscillator construction. For the extreme cubics the symbol of their commutator, up to sign, is
+\[
+ 9\operatorname{tr}\!\left(\big(X^2-\tfrac13\operatorname{tr}(X^2)I\big)
+                            \big(Y^2-\tfrac13\operatorname{tr}(Y^2)I\big)\right)
+ =9\operatorname{tr}(X^2Y^2)-3\operatorname{tr}(X^2)\operatorname{tr}(Y^2).
+\] Thus the symbols of the image generate the invariant ring. Reductivity identifies this ring with the graded algebra of the invariant operators. Filtered induction gives surjectivity in each degree. The Hilbert series on both sides is
+\[
+ \frac{1}{(1-s^2)^3(1-s^3)^4(1-s^4)} .
+\]
+Each filtered piece is finite dimensional, so the map is injective as well.
+\end{proof}
+
+\subsection{Diagonalization and angular operators}
+For \(G=\operatorname{PGL}_3\), its diagonal torus \(T_0\) and Cartan subalgebra \(\mathfrak t\), the ordered-eigenvalue cover is
+\(
+ G/T_0\times\mathfrak t_{\rm reg}\longrightarrow\mathfrak{sl}_3^{\rm rs},
+ (gT_0,h)\mapsto ghg^{-1}.
+\)
+Transpose lifts to \((g^{-\mathsf t}T_0,h)\), and \(S_3\) acts on both factors. Clearing powers of the invariant discriminant and descending differential operators along this finite étale cover gives
+\begin{equation}\label{eq:g2cover}
+ \operatorname{Frac}\mathcal A
+ =\big[\operatorname{Frac}\big(D(\mathfrak t_{\rm reg})\otimes\Gamma\big)\big]^{S_3},
+ \qquad \Gamma=\big(D(G/T_0)^G\big)^{g\mapsto g^{-\mathsf t}} .
+\end{equation}
+The fixed-denominator argument of Section~\ref{sec:paper-c2} applies before passage to fractions. As there, \(D(G/T_0)^G\) is the weight-zero part of \(U(\mathfrak{sl}_3)/U(\mathfrak{sl}_3)\mathfrak t\). Angular transpose sends \(E_{ij}\) to \(-E_{ji}\). In this quotient opposite root pairs can be reversed since their difference is Cartan. Put
+\[
+ A=E_{12}E_{21},\quad B=E_{23}E_{32},\quad D=E_{31}E_{13},\qquad
+ J=A+B+D,\quad N=[A,B].
+\]
+Transpose fixes the three pairs and \(S_3\) permutes them. With \(\{a,b\}=ab+ba\), the angular relations are
+\begin{equation}\label{eq:g2pair}
+ [J,A]=[J,B]=0,\qquad [A,N]=\{A,B\}-\{A,D\},\quad
+ [B,N]=\{B,D\}-\{A,B\}.
+\end{equation}
+Order the letters \(u,v,j,k,l,m=E_{12},E_{21},E_{23},E_{32},E_{31},E_{13}\), followed by the diagonal units. Write \(R=ujl,\ R'=vkm\). Sorting adjacent letters by \([E_{ij},E_{kl}]=\delta_{jk}E_{il}-\delta_{li}E_{kj}\) and discarding terminal diagonal letters gives
+\[
+ N=A-B+D-R+R',\quad [B,N]=2(BD-AB),\quad
+ [A,N]=2(AB-AD-A+B-D+R-R').
+\]
+Both right sides in \eqref{eq:g2pair} give the same normal forms, and the quadratic Casimir reduces to \(2J\).
+
+To see that \eqref{eq:g2pair} presents the angular algebra, pass to principal symbols. A zero-weight monomial gives a balanced directed graph on three vertices. Cycle decomposition gives three two-cycles \(\bar A,\bar B,\bar D\) and two triangles \(z,z'\), with sole relation \(zz'=\bar A\bar B\bar D\): after eliminating opposite triangles all edge multiplicities distinguish the remaining monomials. Transpose exchanges \(z,-z'\), so its invariants are polynomial on the two-cycles and \(z-z'\), using \((z+z')^2=(z-z')^2+4\bar A\bar B\bar D\). Those four symbols lift to \(J,A,B,N\) up to invertible coordinate changes. The defining commutators lower their weights \(2,2,2,3\), proving the presentation by comparison with this polynomial graded ring.
+
+\subsection{The shift weight and its central parameter}\label{sec:g2shift}
+Let \(V=4(A-B),\ W=[D,V]=8N\). Adding and subtracting \eqref{eq:g2pair} gives
+\[
+ [D,W]=2\{D,V\},\qquad [V,W]+2V^2=32(J-D)(J-3D).
+\]
+For independent \(J,\beta\), set \(K_G=\mathbb C(J,\beta)\). In \(K_G(t)(e;\tau)\), with \(e r(t)=r(t-1)e\), put \(D=t^2-1/4,\ V=e+h(t)e^{-1}\). The first relation is
+\((D(t)-D(t\mp1))^2=2(D(t)+D(t\mp1))\). The \(e^{\pm2}\) coefficients in the second cancel. Its constant term is
+\[
+ 4\big((t+1)h(t)-(t-1)h(t-1)\big)
+ =32(J-t^2+\tfrac14)(J-3t^2+\tfrac34).
+\]
+For \(g(s)=s^3-(J+1)s\), direct subtraction gives
+\(
+ g(t+\tfrac12)^2-g(t-\tfrac12)^2
+ =2t(J-t^2+\tfrac14)(J-3t^2+\tfrac34)
+\).
+Hence the required weight is
+\begin{equation}\label{eq:g2hweight}
+ h(t)=\frac{4(g(t+\tfrac12)^2-\beta)}{t(t+1)} .
+\end{equation}
+
+Write \(e_-=h(t)e^{-1},\ Y=(W-V)/2=(e-e_-)t\). For faithfulness, give \(t,e,J,\beta\) weights \(1,2,2,6\). Shifts preserve leading terms, making their symbols independent commuting variables in the ambient graded fraction field. From \(\bar J,\bar D,\bar V,\bar Y\), adjoining a square root \(\bar t\) of \(\bar D\) recovers \(\bar e,\bar e_-\) by sum and difference, then
+\(
+ \bar\beta=(\bar t^3-\bar J\bar t)^2-\bar t^2\bar e_-\bar e/4 .
+\)
+Thus the four angular symbols are independent, proving injectivity. Let \(H\) be the division ring generated by these angular operators. As \(h(-t)=h(t-1)\), the involution \(\sigma(t,e)=(-t,e_-)\) over \(K_G\) fixes \(H\). Direct multiplication gives
+\[
+ tVt^{-1}=V+Yt^{-2},\qquad tYt^{-1}=Y+V,\qquad t^2=D+1/4 .
+\]
+Thus \(t\) normalizes \(H\). The finite-dimensional domain \(H+Ht\) is a division ring. It contains \(e,e_-\) by sum and difference and \(\beta\) by \eqref{eq:g2hweight}. The two summands have opposite signs, proving \(H=K_G(t)(e;\tau)^\sigma\). A central element of \(H\) commutes with \(t^2\), forcing its shift Laurent expansion into \(K_G(t)\). Commuting also with \(V\) forces periodicity in \(t\). Thus \(Z(H)=K_G\).
+
+Let \(P_3(\xi)=\operatorname{tr}(\xi^3)\) on \(\mathfrak{sl}_3^*\) under the trace pairing. Write \(\Omega\) for the image of the central element \(\operatorname{sym}(P_3)\in U(\mathfrak{sl}_3)\) in the weight-zero quotient. Its normalization is
+\begin{equation}\label{eq:beta}
+ \Omega^2/9=D(D-J)^2+(2D-J)^2-VDV/16+W^2/64=\beta .
+\end{equation}
+For the first equality, symmetrize the six orderings of each \(E_{ij}E_{jk}E_{ki}\) in the trace and sort by the matrix-unit rule above. The supplementary PBW calculation reproduces all coefficients. The trace component vanishes in the angular quotient. For the second equality write \(d_0=t^2-1/4\). The \(e^{\pm2}\) terms of \(VDV-W^2/4\) cancel, and its remaining coefficient is
+\[
+ (2t^2+3t+1)h(t)+(2t^2-3t+1)h(t-1)
+ =16\big(d_0(d_0-J)^2+(2d_0-J)^2-\beta\big).
+\]
+The permutations fix \(J,\Omega\), so they fix \(K_G\) pointwise.
+
+\subsection{The four branch points and the six positions}\label{sec:g2four}
+In characteristic \(p>3\), put \(K_G^{(p)}=k(J,\beta)\) for \(k\) algebraically closed.
+As in Section~\ref{sec:paper-c2}, the split shift ring has centre \(K_G^{(p)}(\eta,S)\), with \(\eta=t^p-t,\ S=e^p\), and degree \(p\). Now \(\sigma(\eta)=-\eta\), so adjoining \(\eta\) to the fixed ring \(H_p\) is a quadratic central extension recovering the split ring. Consequently \(H_p\) also has degree \(p\) and its centre is the fixed part of the split centre.
+
+Write \(g(s)-\sqrt\beta=\prod_{i=1}^3(s-\lambda_i)\) and \(\ell_i=\lambda_i^p-\lambda_i\). Pairing the roots \(\lambda_i,-\lambda_i\) of \(g(s)^2-\beta\) yields
+\[
+ \begin{aligned}
+ \prod_{j\in\mathbb F_p}(t+j)(t+j+1)&=\eta^2,\\
+ 4^p\prod_{j\in\mathbb F_p}\big(g(t+j+\tfrac12)^2-\beta\big)
+ &=4\prod_{i=1}^3(\eta-\ell_i)(\eta+\ell_i),\\
+ \sigma(S)=R/S,\qquad R=\prod_{j\in\mathbb F_p}h(t+j)
+ &=\frac{4}{\eta^2}\prod_{i=1}^3(\eta^2-\ell_i^2).
+ \end{aligned}
+\]
+Here \(\tfrac12\in\mathbb F_p\), so translating the orbit by \(\tfrac12\) leaves its product unchanged.
+The invariants \(\rho=\eta^2,\ v=(S+R/S)/4,\ w=\eta(S-R/S)/4\) recover \(S,\eta\) after adjoining a square root of \(\rho\). Thus the centre is their field, with
+\[
+ \begin{gathered}
+ w^2-\rho v^2=f(\rho),\quad
+ f(\rho)=-\prod_i(\rho-\ell_i^2)=\gamma-\rho(\rho-\alpha)^2,\\
+ \alpha=-\sum_{i<j}\ell_i\ell_j,\qquad \gamma=(\ell_1\ell_2\ell_3)^2 .
+ \end{gathered}
+\]
+Indeed \(\sum_i\ell_i=0\); the symmetric coefficients \(\alpha,\gamma\) are unchanged by simultaneous negation and belong to \(K_G^{(p)}\).
+Extend this scalar field to \(F'=k(\lambda_1,\lambda_2)^{\langle-1\rangle}\), with simultaneous negation, where \(\lambda_1,\lambda_2\) are independent and \(\lambda_3=-\lambda_1-\lambda_2\). The four elements \(0,\ell_1^2,\ell_2^2,\ell_3^2\) are distinct; both square roots of \(\gamma\) change sign, so \(\gamma\) is nonsquare in \(F'\). In the quaternion \((\rho,f)\) put \(i^2=\rho,\ j^2=f,\ ij=-ji\). The elements \((\rho-\alpha)i+j,\sqrt{-1}\,ij\) anticommute and square to \(\gamma,\rho f\), respectively. The equivalent conic therefore has model
+\[
+ v_0^2-\gamma v_1^2=-\rho(\rho-\ell_1^2)(\rho-\ell_2^2)(\rho-\ell_3^2).
+\]
+
+For the finite presentation required in Proposition~\ref{prop:modularflow}, the four-generator angular relations in \(J,D,V,W\) use only powers of two in their denominators. For \(p>3\) they still give a polynomial associated graded ring: the commutators lower weights and the same reconstruction of \(\bar t,\bar e,\bar\beta\) proves independence of the four symbols. Hence the reduced order embeds in the shift ring, and \(H_p\) is its fraction ring by the decomposition using the normalizing element \(t\). Localize this noetherian order at the nonzero polynomials in \(J,\beta\). Over the parameter field the presentation consists of \(D,V,W\), the three commutator relations, and
+\[
+ D(D-J)^2+(2D-J)^2-VDV/16+W^2/64=\beta.
+\]
+This is the same central localization in all the stated characteristics by \eqref{eq:beta} and the independence calculation. The reduced rational adjoint action fixes \(K_G^{(p)}\) pointwise and extends fixing \(F'\) and its perfect closure. Its translating coordinate would give a ruling over those very scalars, excluded by Proposition~\ref{prop:fourbranch}. Proposition~\ref{prop:modularflow} thus gives rigidity of \(H\), also after adjoining independent scalar variables.
+
+\paragraph{Application of the position bound.}\label{sec:g2apply}
+Put \(u_1=\operatorname{tr}(h^2),\ u_2=\operatorname{tr}(h^3)\) on the traceless Cartan and \(E=K_G(\mathfrak t)\). The characteristic cubic gives \(E^{S_3}=K_G(u_1,u_2)\). The two derivatives \(P_i=\partial/\partial u_i\) extend uniquely through the finite separable extension \(E/E^{S_3}\), commute, and fix \(H\).
+For \(B=H(\mathfrak t)^{S_3}\), semilinear Galois descent gives
+\[
+ B\otimes_{E^{S_3}}E=H(\mathfrak t),\qquad Z(B)=E^{S_3}.
+\]
+Indeed a central element of \(B\) centralizes the extended coefficients. In \(\mathcal D=H(\mathfrak t)[P_1,P_2]\) the ordered monomial basis gives \(\mathcal D^{S_3}=B[P_1,P_2]\). For a fixed fraction \(q\), its right denominator ideal \(\{a\in\mathcal D:qa\in\mathcal D\}\) is a nonzero semilinear right \(E\)-space. Descent supplies a nonzero invariant denominator. Hence the fixed fraction ring in \eqref{eq:g2cover} is \(\operatorname{Frac}B[P_1,P_2]\).
+
+Let \(u_3,u_4,u_5\) be the three positions in Petukhov's Weyl factor. The full coefficient algebra is \(B(u_3,u_4,u_5)\). Commuting a central fraction with each \(u_i\) eliminates its conjugate momentum by Laurent expansion. Centralizing the coefficients then puts the fraction in \(K_G(\mathbf u)\); the five partial derivatives force it into \(K_G\). In Proposition~\ref{prop:bound} take
+\[
+ k=K_G,\qquad \mathcal E=E(u_3,u_4,u_5),\qquad
+ [\mathcal E:K_G(u_1,\ldots,u_5)]=6.
+\]
+This extension orders the Cartan eigenvalues. The extended coefficient ring is \(H(\mathfrak t,u_3,u_4,u_5)\); the five momentum symbols add further independent central variables. The proved angular rigidity gives at most five independent positions, whereas \((\dim\mathfrak g_2-2)/2=6\).
+
+
+\section{\texorpdfstring{From \(C_2\) to \(C_n\)}{From C2 to Cn}}
+\label{sec:higher-symplectic}
+For a complex simply connected semisimple group \(G\), write
+\(Q_{\mathfrak g}=\Frac U(\mathfrak g)\),
+\(Z_{\mathfrak a}=Z(U(\mathfrak a))\), and \(K_{\mathfrak a}=\Frac Z_{\mathfrak a}\).
+Let \(P=LN\) be a parabolic with Levi \(L\), \(X=G/P\), and \(m=\dim X\).
+We need the fraction formula
+\begin{equation}\label{eq:levi-paper}
+ Q_{\mathfrak g}\otimes_{K_{\mathfrak g}}K_{\mathfrak l}
+ \ \cong\ \Frac\!\left(A_m(\C)\otimes_{\C} U(\mathfrak l)\right).
+\end{equation}
+
+\paragraph{Passage to the big cell.}
+For the \(L\)-torsor \(\pi:G/N\to X\) put
+\(\mathcal B=(\pi_*\mathcal D_{G/N})^L\). On the opposite cell
+\(V\simeq\mathbb A^m\) the torsor is \(V\times L\). Hence
+\[
+ A:=\Gamma(X,\mathcal B)=U(\mathfrak g)\otimes_{Z_{\mathfrak g}}Z_{\mathfrak l},
+ \qquad A_V:=\Gamma(V,\mathcal B)=A_m(\C)\otimes U(\mathfrak l).
+\]
+The first equality is Backelin--Kremnizer
+\cite[Def.~4.2, Sec.~4.4 and Thm.~4.10(iii)]{BK},
+with \(S(\mathfrak h)^{W_L}=Z_{\mathfrak l}\) in shifted
+Harish--Chandra coordinates. To pass from global sections to fractions
+we construct a right denominator for each \(b\in A_V\).
+
+Write \(F_j\mathcal B\) for operators of order at most \(j\). These are
+locally free, so restriction embeds \(A\) in \(A_V\).
+For \(m>0\), let \(D=X\setminus V\) be the reduced Schubert boundary
+divisor and fix \(k\ge1\). The symbol bundles are
+\(\gr_i\mathcal B=\operatorname{Sym}^i\mathcal V\), where \(\mathcal V\)
+is the bundle of invariant vector fields on \(G/N\),
+of rank \(\rho=m+\dim\mathfrak l\). Set \(g=\dim\mathfrak g=m+\rho\).
+Restriction to \(kD\) preserves the filtration exact sequences, since their graded quotients are locally free. Hence
+\[
+ \begin{aligned}
+ h^0(kD,F_j\mathcal B|_{kD})
+ &\le\sum_{i=0}^{j}h^0(kD,\operatorname{Sym}^i\mathcal V|_{kD})
+   =O_k(j^{g-1}),\\
+ h^0(X,F_j\mathcal B)
+ &\ge\dim U_{\le j}(\mathfrak g)=\binom{j+g}{g}.
+ \end{aligned}
+\]
+Each summand is \(h^0(\mathcal O(i))\) on a projective bundle of dimension
+\((m-1)+(\rho-1)=g-2\), hence \(O_k((1+i)^{g-2})\).
+This bound also holds on the thickening: multiply into powers of an ample
+line bundle by a section avoiding all associated points.
+The second bound uses PBW and the injection \(U(\mathfrak g)\hookrightarrow A\)
+split by Weyl averaging on \(Z_{\mathfrak l}\).
+
+For \(j\gg0\) choose \(0\ne a\in\ker[\Gamma(X,F_j\mathcal B)\to
+\Gamma(kD,F_j\mathcal B|_{kD})]\).
+For \(b\in A_V\) of order \(q\), choose \(s\) bounding its pole order and
+take \(k\ge\max(1,s+q)\). In a local equation \(f\) of \(D\) we have
+\[
+ b=f^{-s}b_0,\qquad a=f^ka_0,\qquad
+ b_0 f^k\in f^{k-q}\mathcal B
+ \quad\Longrightarrow\quad ba\in A,\quad b=(ba)a^{-1}.
+\]
+The divisibility is Leibniz's rule. For \(m=0\), \(A=A_V\).
+
+The extension \(K_{\mathfrak l}/K_{\mathfrak g}\) is finite by the
+inclusion of Weyl-group invariant fields. The natural map from the left
+side of \eqref{eq:levi-paper} to \(\Frac A_V\) is injective: clear a common
+Ore denominator in \(U(\mathfrak g)\) and a central denominator in
+\(Z_{\mathfrak l}\), then use \(A\hookrightarrow A_V\).
+Its image is a domain finite-dimensional over \(Q_{\mathfrak g}\) on
+both sides, hence a division ring. The right denominators above put all
+of \(A_V\) in that image. This proves \eqref{eq:levi-paper}.
+
+For a Borel, \(\mathfrak l=\mathfrak h\); the global-sections identity in this case is also Borho--Brylinski \cite[Prop.~8]{BB}. With
+\(K_{\mathrm{HC}}=\C(\mathfrak h^*)\) and \(N_+=|\Phi^+|\), the formula becomes
+\[
+ Q_{\mathfrak g}\otimes_{K_{\mathfrak g}}K_{\mathrm{HC}}
+ \cong D_{N_+}(K_{\mathrm{HC}}).
+\]
+Expanding in a basis of \(K_{\mathrm{HC}}/K_{\mathfrak g}\) yields
+\(Z(Q_{\mathfrak g})\otimes_{K_{\mathfrak g}}K_{\mathrm{HC}}
+ = Z(Q_{\mathfrak g}\otimes_{K_{\mathfrak g}}K_{\mathrm{HC}})=K_{\mathrm{HC}}\).
+In particular \(Z(Q_{\mathfrak g})=K_{\mathfrak g}\).
+
+\paragraph{The symplectic Levi.}
+Take \(G=\operatorname{Sp}_{2n}\) and
+\(\mathfrak l=\mathfrak{sp}_4\oplus\C^{n-2}\). Write
+\(Q_n=Q_{\mathfrak{sp}_{2n}},\,K_n=K_{\mathfrak{sp}_{2n}}\). Then
+\[
+ m=n^2-4,\qquad E=K_{\mathfrak l}=K_2(z_1,\ldots,z_{n-2}),\qquad
+ [E:K_n]=[W(C_n):W(C_2)]=2^n n!/8 .
+\]
+Thus \eqref{eq:levi-paper} adds \(m\) commuting Weyl pairs to \(Q_2\) over
+the independent parameters \(z_i\). A chart \(Q_n\simeq D_{n^2}(K_n)\)
+would give \(Q_n\otimes_{K_n}E\simeq D_{n^2}(E)\):
+the Weyl basis and common denominators give an injection into \(D_{n^2}(E)\);
+its image is a division ring by finiteness and contains all the generators.
+Each added pair contributes one position and one momentum symbol.
+The coefficient calculation in Section~\ref{sec:paper-c2} persists over
+these independent variables, so Proposition~\ref{prop:bound} gives
+\[
+  n^2=m+4\ \le\ \trdeg_E M^\flat\ \le\ m+3=n^2-1.
+\]
+An abstract isomorphism induces an isomorphism of centres. Composing with the inverse on Weyl coefficients reduces to the centre-preserving case, proving Theorem~\ref{main}.
+
+
+\paragraph{Supplementary calculations.}
+The source archive contains the PBW reductions, orbit products, and Lean proofs of the oscillator, Cartan-coordinate and matrix identities used in Propositions~\ref{prop:cartansplit} and~\ref{prop:matrix}. The formal statements and their hypotheses are indexed in the archive. The algebra identifications and Theorem~\ref{main} are arguments of the manuscript.
+\begin{thebibliography}{99}
+\small
+\bibitem{ADS} H. Aslaksen, V. Drensky and L. Sadikova,
+Defining relations of invariants of two \(3\times3\) matrices,
+\emph{J. Algebra} \textbf{298} (2006), 41--57.
+\href{https://doi.org/10.1016/j.jalgebra.2006.01.042}{doi:10.1016/j.jalgebra.2006.01.042}.
+\bibitem{BB} W. Borho and J.-L. Brylinski, Differential operators on homogeneous spaces II. Relative enveloping algebras, \emph{Bull. Soc. Math. France} \textbf{117} (1989), 167--210. \href{https://doi.org/10.24033/bsmf.2117}{doi:10.24033/bsmf.2117}.
+\bibitem{BK} E. Backelin and K. Kremnizer,
+Singular localization of \(\mathfrak g\)-modules and applications to representation theory,
+\emph{J. Eur. Math. Soc.} \textbf{17} (2015), 2763--2787.
+\href{https://doi.org/10.4171/JEMS/570}{doi:10.4171/JEMS/570}.
+\bibitem{CTS} J.-L. Colliot-Thélène and A. N. Skorobogatov,
+\emph{The Brauer--Grothendieck Group}, Springer, 2021, Chs.~6--7. Item numbers in the text refer to the manuscript dated 31 October 2019.
+\href{https://www.imo.universite-paris-saclay.fr/~jean-louis.colliot-thelene/BGgroup_book.pdf}{Authors' text}.
+\bibitem{ELS} L. Ein, R. Lazarsfeld and K. E. Smith, Uniform approximation of Abhyankar valuation ideals in smooth function fields, \emph{Amer. J. Math.} \textbf{125} (2003), 409--440. \href{https://arxiv.org/abs/math/0202303}{arXiv:math/0202303}.
+\bibitem{Eisenbud} D. Eisenbud, \emph{Commutative Algebra with a View Toward Algebraic Geometry}, GTM 150, Springer, 1995. \href{https://doi.org/10.1007/978-1-4612-5350-1}{doi:10.1007/978-1-4612-5350-1}.
+\bibitem{FHJS} V. Futorny, J. T. Hartwig, E. C. Jauch and J. Schwarz,
+Galois rings: ring-theoretic properties and applications to Coulomb branches and affine Hecke algebras, version 3 (2026).
+\href{https://arxiv.org/abs/2507.10782v3}{arXiv:2507.10782v3}.
+\bibitem{GK} I. M. Gel'fand and A. A. Kirillov,
+On fields connected with the enveloping algebras of Lie algebras,
+\emph{Dokl. Akad. Nauk SSSR} \textbf{167} (1966), 503--505.
+\href{https://www.mathnet.ru/eng/dan32159}{MathNet}.
+\bibitem{GW} R. Goodman and N. R. Wallach,
+\emph{Symmetry, Representations, and Invariants}, Graduate Texts in Mathematics 255, Springer, 2009.
+\href{https://doi.org/10.1007/978-0-387-79852-3}{doi:10.1007/978-0-387-79852-3}.
+\bibitem{HC} Harish--Chandra, On some applications of the universal enveloping algebra of a semisimple Lie algebra, \emph{Trans. Amer. Math. Soc.} \textbf{70} (1951), 28--96. \href{https://doi.org/10.1090/S0002-9947-1951-0044515-0}{doi:10.1090/S0002-9947-1951-0044515-0}.
+\bibitem{Petukhov} A. Petukhov,
+On the Gelfand--Kirillov conjecture for the \(W\)-algebras attached to the minimal nilpotent orbits, \emph{J. Algebra} \textbf{470} (2017), 289--299.
+\href{https://doi.org/10.1016/j.jalgebra.2016.08.021}{doi:10.1016/j.jalgebra.2016.08.021}.
+\bibitem{PremetPBW} A. Premet, Special transverse slices and their enveloping algebras, \emph{Adv. Math.} \textbf{170} (2002), 1--55. \href{https://doi.org/10.1006/aima.2001.2063}{doi:10.1006/aima.2001.2063}.
+\bibitem{PremetW} A. Premet,
+Enveloping algebras of Slodowy slices and the Joseph ideal,
+\emph{J. Eur. Math. Soc.} \textbf{9} (2007), 487--543.
+\href{https://doi.org/10.4171/JEMS/86}{doi:10.4171/JEMS/86}.
+\bibitem{PremetGK} A. Premet,
+Modular Lie algebras and the Gelfand--Kirillov conjecture,
+\emph{Invent. Math.} \textbf{181} (2010), 395--420.
+\href{https://doi.org/10.1007/s00222-010-0249-8}{doi:10.1007/s00222-010-0249-8}.
+\bibitem{Schwarz} G. W. Schwarz,
+Finite-dimensional representations of invariant differential operators,
+\emph{J. Algebra} \textbf{258} (2002), 160--204.
+\href{https://doi.org/10.1016/S0021-8693(02)00500-8}{doi:10.1016/S0021-8693(02)00500-8}.
+\end{thebibliography}
+
+\end{document}
