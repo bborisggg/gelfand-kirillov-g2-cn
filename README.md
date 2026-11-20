@@ -1,4 +1,6 @@
-A valuation obstruction to Weyl coordinates in types C and G2
+# Gelfand-Kirillov hypothesis for G_2 and type C is false
+
+## A valuation obstruction to Weyl coordinates in types C and G2
 
 WeylCoordinates.tex is the complete manuscript. Compile it with pdflatex twice.
 SOURCE-NOTES.md identifies the published inputs.
