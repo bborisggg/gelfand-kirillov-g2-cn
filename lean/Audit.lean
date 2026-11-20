@@ -1,0 +1,77 @@
+import CoordinateIdentities
+import OrbitProducts
+import WeightDensity
+import AngularCasimir
+import OscillatorWeights
+import OscillatorCasimir
+import BiInvariantCasimir
+import CartanCoordinates
+import CartanFixedField
+import CartanComparison
+import AngularJacobi
+import CubicPresentation
+import MatrixSymbols
+import OscillatorBracket
+import TraceComparison
+import TraceJacobian
+import FilteredComparison
+
+#print axioms CoordinateIdentities.quartic_reflection
+#print axioms CoordinateIdentities.quartic_factorization
+#print axioms CoordinateIdentities.cubic_norm
+#print axioms CoordinateIdentities.sextic_difference
+#print axioms CoordinateIdentities.orbit_product_5
+#print axioms CoordinateIdentities.orbit_product_7
+#print axioms CoordinateIdentities.orbit_product_11
+#print axioms OrbitProducts.split_orbit_product
+#print axioms WeightDensity.integer_tail
+#print axioms WeightDensity.shifted_highest_weights_dense
+#print axioms WeightDensity.evalTwo_of_dense
+#print axioms AngularCasimir.antipode_fixes
+#print axioms AngularCasimir.commutes_with_generators
+#print axioms AngularCasimir.coefficient_actions_agree
+#print axioms OscillatorWeights.raising_annihilates
+#print axioms OscillatorWeights.cartan_eigenvalues
+#print axioms OscillatorWeights.symplectic_eigenvalues
+#print axioms OscillatorWeights.contractions_annihilate
+#print axioms OscillatorWeights.value_at_witness
+#print axioms OscillatorWeights.angular_casimir_eigenvalue
+#print axioms OscillatorWeights.left_right_casimir
+#print axioms OscillatorWeights.determinant_directions
+#print axioms CartanCoordinates.recover_pair
+#print axioms CartanCoordinates.ordered_root_fields
+#print axioms CartanCoordinates.cartan_field_for_casimir_roots
+#print axioms CartanCoordinates.field_from_symmetric_characters
+#print axioms CartanCoordinates.weight_casimirs
+#print axioms CartanCoordinates.symplectic_central_characters
+#print axioms CartanCoordinates.symmetric_central_fields
+#print axioms CartanFixedField.signed_permutation_fixed_field
+#print axioms CartanComparison.field_from_weight_grid
+#print axioms AngularJacobi.jacobi
+#print axioms AngularJacobi.lowered
+#print axioms AngularJacobi.raising_invariant
+#print axioms AngularJacobi.lowering_invariant
+#print axioms AngularJacobi.eliminate
+#print axioms AngularJacobi.quadratic_relations
+#print axioms AngularJacobi.casimir_correction
+#print axioms AngularJacobi.commutes_bracket
+#print axioms AngularJacobi.sl2_casimir
+#print axioms AngularJacobi.central_on_generators
+#print axioms CubicPresentation.complete_table
+#print axioms MatrixSymbols.projection_trace
+#print axioms MatrixSymbols.projection_pairing
+#print axioms MatrixSymbols.mixed_quartic
+#print axioms MatrixSymbols.traceless_quartic
+#print axioms MatrixSymbols.cubic_gradient_norm
+#print axioms OscillatorBracket.double_product_rule
+#print axioms OscillatorBracket.double_commutator
+#print axioms OscillatorBracket.oscillator_bracket
+#print axioms OscillatorBracket.matrix_traceless
+#print axioms OscillatorBracket.matrix_quadratic
+#print axioms OscillatorBracket.matrix_cubic
+#print axioms OscillatorBracket.oscillator_bracket_traces
+#print axioms TraceJacobian.trace_linearization
+#print axioms TraceJacobian.left_inverse_cleared
+#print axioms TraceJacobian.right_inverse_cleared
+#print axioms TraceJacobian.jacobian_minor
+#print axioms FilteredComparison.bijective_of_graded

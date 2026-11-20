@@ -1,0 +1,95 @@
+{
+  "CoordinateIdentities": [
+    "CoordinateIdentities.quartic_reflection",
+    "CoordinateIdentities.quartic_factorization",
+    "CoordinateIdentities.cubic_norm",
+    "CoordinateIdentities.sextic_difference",
+    "CoordinateIdentities.orbit_product_5",
+    "CoordinateIdentities.orbit_product_7",
+    "CoordinateIdentities.orbit_product_11"
+  ],
+  "OrbitProducts": [
+    "OrbitProducts.split_orbit_product"
+  ],
+  "WeightDensity": [
+    "WeightDensity.integer_tail",
+    "WeightDensity.shifted_highest_weights_dense",
+    "WeightDensity.evalTwo_of_dense"
+  ],
+  "AngularCasimir": [
+    "AngularCasimir.antipode_fixes",
+    "AngularCasimir.commutes_with_generators",
+    "AngularCasimir.coefficient_actions_agree"
+  ],
+  "OscillatorWeights": [
+    "OscillatorWeights.raising_annihilates",
+    "OscillatorWeights.cartan_eigenvalues",
+    "OscillatorWeights.symplectic_eigenvalues",
+    "OscillatorWeights.contractions_annihilate",
+    "OscillatorWeights.value_at_witness"
+  ],
+  "OscillatorCasimir": [
+    "OscillatorWeights.angular_casimir_eigenvalue"
+  ],
+  "BiInvariantCasimir": [
+    "OscillatorWeights.left_right_casimir",
+    "OscillatorWeights.determinant_directions"
+  ],
+  "CartanCoordinates": [
+    "CartanCoordinates.recover_pair",
+    "CartanCoordinates.ordered_root_fields",
+    "CartanCoordinates.cartan_field_for_casimir_roots",
+    "CartanCoordinates.field_from_symmetric_characters",
+    "CartanCoordinates.weight_casimirs",
+    "CartanCoordinates.symplectic_central_characters",
+    "CartanCoordinates.symmetric_central_fields"
+  ],
+  "CartanFixedField": [
+    "CartanFixedField.signed_permutation_fixed_field"
+  ],
+  "CartanComparison": [
+    "CartanComparison.field_from_weight_grid"
+  ],
+  "AngularJacobi": [
+    "AngularJacobi.jacobi",
+    "AngularJacobi.lowered",
+    "AngularJacobi.raising_invariant",
+    "AngularJacobi.lowering_invariant",
+    "AngularJacobi.eliminate",
+    "AngularJacobi.quadratic_relations",
+    "AngularJacobi.casimir_correction",
+    "AngularJacobi.commutes_bracket",
+    "AngularJacobi.sl2_casimir",
+    "AngularJacobi.central_on_generators"
+  ],
+  "CubicPresentation": [
+    "CubicPresentation.complete_table"
+  ],
+  "MatrixSymbols": [
+    "MatrixSymbols.projection_trace",
+    "MatrixSymbols.projection_pairing",
+    "MatrixSymbols.mixed_quartic",
+    "MatrixSymbols.traceless_quartic",
+    "MatrixSymbols.cubic_gradient_norm"
+  ],
+  "OscillatorBracket": [
+    "OscillatorBracket.double_product_rule",
+    "OscillatorBracket.double_commutator",
+    "OscillatorBracket.oscillator_bracket"
+  ],
+  "TraceComparison": [
+    "OscillatorBracket.matrix_traceless",
+    "OscillatorBracket.matrix_quadratic",
+    "OscillatorBracket.matrix_cubic",
+    "OscillatorBracket.oscillator_bracket_traces"
+  ],
+  "TraceJacobian": [
+    "TraceJacobian.trace_linearization",
+    "TraceJacobian.left_inverse_cleared",
+    "TraceJacobian.right_inverse_cleared",
+    "TraceJacobian.jacobian_minor"
+  ],
+  "FilteredComparison": [
+    "FilteredComparison.bijective_of_graded"
+  ]
+}
